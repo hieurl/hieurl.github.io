@@ -40,6 +40,8 @@ function statusChangeCallback2(response) {
     //console.log(response);
     if (response.status === 'connected') {
         var post_id=document.getElementById("post_id").value;
+        var regex=/https?:\/\/(www.)?facebook\.com\/([a-zA-Z0-9_\- ]*)\/([a-zA-Z0-9_\- ]*)\/([a-zA-Z0-9_\.\-]*)\/([a-zA-Z0-9_\-]*)(\/\?type=1&theater\/)?/i;
+        post_id=post_id.match(regex)[5];
         console.log(post_id);
         loadComment('/'+post_id,[]);
     } else if (response.status === 'not_authorized') {
